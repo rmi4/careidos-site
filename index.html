@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>CareIDOS — Coming Soon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Geist+Mono:wght@300;400&family=Geist:wght@300;400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#141E2B;--ink2:#3A4555;--ink3:#8A95A3;
+  --rule:#D8E4EC;--bg:#F6FAFE;
+  --brand:#4AAED4;--teal:#0EB87A;--teal2:#089660;
+}
+html,body{height:100%;font-size:16px}
+body{font-family:'Geist',sans-serif;font-weight:300;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;min-height:100vh;cursor:none;overflow-x:hidden}
+#cursor-dot{position:fixed;width:5px;height:5px;background:var(--ink);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:opacity .15s;will-change:left,top}
+#cursor-ring{position:fixed;width:28px;height:28px;border:1px solid rgba(20,30,43,0.22);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .4s,height .4s,border-color .4s,opacity .2s;will-change:left,top}
+#cursor-dot.gone,#cursor-ring.gone{opacity:0}
+#cursor-ring.hover{width:44px;height:44px;border-color:var(--teal)}
+.grid-bg{position:fixed;inset:0;background-image:linear-gradient(rgba(74,174,212,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(74,174,212,0.05) 1px,transparent 1px);background-size:70px 70px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 0%,transparent 100%);pointer-events:none;z-index:0}
+main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 2rem;position:relative;z-index:1;text-align:center}
+.wordmark{font-family:'Geist',sans-serif;font-size:0.78rem;font-weight:400;letter-spacing:0.38em;text-transform:uppercase;color:var(--brand);margin-bottom:3.5rem;opacity:0;animation:rise .8s .1s ease forwards}
+.headline{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,7vw,6rem);font-weight:300;line-height:1.02;letter-spacing:-0.02em;margin-bottom:1.8rem;opacity:0;animation:rise .8s .25s ease forwards}
+.headline em{font-style:italic;color:var(--teal)}
+.sub{font-size:0.9rem;color:var(--ink3);line-height:1.9;max-width:340px;margin-bottom:3.5rem;opacity:0;animation:rise .8s .38s ease forwards}
+.divider{width:32px;height:1px;background:linear-gradient(90deg,transparent,var(--brand),transparent);margin:0 auto 3.5rem;opacity:0;animation:rise .8s .44s ease forwards}
+.form-wrap{width:100%;max-width:380px;opacity:0;animation:rise .8s .52s ease forwards}
+.form-label{font-family:'Geist Mono',monospace;font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink3);margin-bottom:0.8rem;display:block;text-align:left}
+form{display:flex;flex-direction:column;gap:0.6rem}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem}
+input,textarea{width:100%;font-family:'Geist',sans-serif;font-size:0.84rem;border:1px solid var(--rule);background:#fff;padding:0.78rem 0.9rem;color:var(--ink);outline:none;resize:none;transition:border-color .22s}
+input::placeholder,textarea::placeholder{color:var(--ink3)}
+input:focus,textarea:focus{border-color:var(--teal)}
+.submit-btn{font-family:'Geist Mono',monospace;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.85rem;background:var(--teal);color:#fff;border:1px solid var(--teal);cursor:none;transition:background .22s,border-color .22s}
+.submit-btn:hover{background:var(--teal2);border-color:var(--teal2)}
+.form-success{display:none;font-family:'Geist Mono',monospace;font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);padding:1rem 0;text-align:center}
+.form-success::before{content:'✓  '}
+footer{position:relative;z-index:1;padding:1.5rem 2rem;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem}
+.foot-logo{font-family:'Geist',sans-serif;font-size:0.72rem;font-weight:400;letter-spacing:0.28em;text-transform:uppercase;color:var(--brand)}
+.foot-email{font-family:'Geist Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:var(--ink3)}
+.foot-copy{font-family:'Geist Mono',monospace;font-size:0.58rem;color:var(--rule)}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){.field-row{grid-template-columns:1fr}footer{flex-direction:column;align-items:flex-start}body{cursor:auto}#cursor-dot,#cursor-ring{display:none}}
+</style>
+</head>
+<body>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div class="grid-bg"></div>
+<main>
+  <div class="wordmark">CAREIDOS</div>
+  <h1 class="headline">Something<br/><em>is coming.</em></h1>
+  <p class="sub">We are working on something new for healthcare. Stay tuned.</p>
+  <div class="divider"></div>
+  <div class="form-wrap">
+    <span class="form-label">Get in touch</span>
+    <form id="contactForm">
+      <div class="field-row">
+        <input type="text" placeholder="Name" required/>
+        <input type="email" placeholder="Email" required/>
+      </div>
+      <textarea placeholder="Message" rows="3" required></textarea>
+      <button class="submit-btn" type="submit">Send →</button>
+    </form>
+    <div class="form-success" id="formSuccess">Thank you. We'll be in touch.</div>
+  </div>
+</main>
+<footer>
+  <span class="foot-logo">CAREIDOS</span>
+  <span class="foot-email">info@careidos.com</span>
+  <span class="foot-copy">© 2026 CareIDOS, Inc.</span>
+</footer>
+<script>
+const dot=document.getElementById('cursor-dot');
+const ring=document.getElementById('cursor-ring');
+let rx=0,ry=0,mx=0,my=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
+(function lerp(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(lerp)})();
+document.querySelectorAll('button,input,textarea').forEach(el=>{el.addEventListener('mouseenter',()=>ring.classList.add('hover'));el.addEventListener('mouseleave',()=>ring.classList.remove('hover'))});
+document.addEventListener('mouseleave',()=>{dot.classList.add('gone');ring.classList.add('gone')});
+document.addEventListener('mouseenter',()=>{dot.classList.remove('gone');ring.classList.remove('gone')});
+document.getElementById('contactForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  document.getElementById('contactForm').style.display='none';
+  document.getElementById('formSuccess').style.display='block';
+});
+</script>
+</body>
+</html>
